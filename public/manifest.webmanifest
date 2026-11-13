@@ -1,0 +1,25 @@
+{
+  "id": "/",
+  "name": "WeatherBoard",
+  "short_name": "WeatherBoard",
+  "description": "Your personal weather dashboard.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#10191e",
+  "theme_color": "#1b4d50",
+  "icons": [
+    {
+      "src": "/icons/weatherboard-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/weatherboard-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
