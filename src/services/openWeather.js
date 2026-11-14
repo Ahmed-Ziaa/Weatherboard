@@ -23,6 +23,9 @@ function getApiKey() {
 }
 
 function getRequestError(status, location) {
+  if (status === 400) {
+    return `OpenWeatherMap could not resolve "${location.name}" as a valid location. Choose a city or town from the suggestions and try again.`
+  }
   if (status === 401) {
     return 'OpenWeatherMap rejected the API key. Check that the key is correct and active.'
   }
@@ -30,7 +33,7 @@ function getRequestError(status, location) {
     return 'This OpenWeatherMap key cannot access the requested weather endpoint. Check your API plan.'
   }
   if (status === 404) {
-    return `OpenWeatherMap could not find "${location.name}". Check the city name and try again.`
+    return `OpenWeatherMap could not find weather for "${location.name}"${location.country ? `, ${location.country}` : ''}. Choose a valid city or town and try again.`
   }
   if (status === 429) {
     return 'OpenWeatherMap is rate-limiting requests. Wait a moment, then try again.'
@@ -43,8 +46,30 @@ function getRequestError(status, location) {
 }
 
 async function request(endpoint, location, signal) {
+  const hasLatitude = location.latitude !== undefined
+  const hasLongitude = location.longitude !== undefined
+  const hasCoordinates = hasLatitude && hasLongitude
+
+  if (
+    hasLatitude !== hasLongitude ||
+    (hasCoordinates &&
+      (!Number.isFinite(location.latitude) ||
+        location.latitude < -90 ||
+        location.latitude > 90 ||
+        !Number.isFinite(location.longitude) ||
+        location.longitude < -180 ||
+        location.longitude > 180))
+  ) {
+    throw new Error(`"${location.name}" has invalid coordinates. Select the city again from the suggestions.`)
+  }
+
   const params = new URLSearchParams({
-    q: location.query || location.name,
+    ...(hasCoordinates
+      ? {
+          lat: String(location.latitude),
+          lon: String(location.longitude),
+        }
+      : { q: location.query || location.name }),
     appid: getApiKey(),
     units: 'metric',
   })
@@ -259,7 +284,9 @@ function normalizeCurrentWeather(payload, location) {
   }
 
   return {
-    name: payload.name || location.name,
+    name: Number.isFinite(location.latitude) && Number.isFinite(location.longitude)
+      ? location.name
+      : payload.name || location.name,
     country: location.country || payload.sys.country || '',
     temperature: Math.round(main.temp),
     feelsLike: Math.round(main.feels_like),

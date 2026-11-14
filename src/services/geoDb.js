@@ -35,6 +35,7 @@ export async function searchGeoDbCities(prefix, { signal } = {}) {
     namePrefix: prefix,
     limit: '7',
     sort: '-population',
+    types: 'CITY',
   })
   const response = await fetch(`${API_URL}?${params}`, {
     headers: {
@@ -64,17 +65,27 @@ export async function searchGeoDbCities(prefix, { signal } = {}) {
       city &&
       typeof city.id === 'number' &&
       typeof city.name === 'string' &&
+      city.name.trim() &&
       typeof city.country === 'string' &&
+      city.country.trim() &&
       typeof city.countryCode === 'string' &&
-      (city.latitude === undefined || Number.isFinite(city.latitude)) &&
-      (city.longitude === undefined || Number.isFinite(city.longitude)),
+      city.countryCode.trim() &&
+      (!city.type ||
+        (typeof city.type === 'string' && city.type.trim().toUpperCase() === 'CITY')) &&
+      ((city.latitude === undefined && city.longitude === undefined) ||
+        (Number.isFinite(city.latitude) &&
+          city.latitude >= -90 &&
+          city.latitude <= 90 &&
+          Number.isFinite(city.longitude) &&
+          city.longitude >= -180 &&
+          city.longitude <= 180)),
     )
     .map((city) => ({
       id: `geodb-${city.id}`,
-      name: city.name,
-      country: city.country,
-      countryCode: city.countryCode,
-      query: `${city.name},${city.countryCode}`,
+      name: city.name.trim(),
+      country: city.country.trim(),
+      countryCode: city.countryCode.trim().toUpperCase(),
+      query: `${city.name.trim()},${city.countryCode.trim().toUpperCase()}`,
       ...(Number.isFinite(city.latitude) && Number.isFinite(city.longitude)
         ? { latitude: city.latitude, longitude: city.longitude }
         : {}),

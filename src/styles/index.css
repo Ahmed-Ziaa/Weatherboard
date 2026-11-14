@@ -411,7 +411,7 @@ a {
 
 .current-card__content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
 }
@@ -1838,7 +1838,7 @@ a {
 }
 
 .current-card__content {
-  z-index: 1;
+  z-index: 2;
 }
 
 .current-card__label {
@@ -1925,6 +1925,7 @@ a {
 .current-card__art {
   z-index: 1;
   min-height: 275px;
+  pointer-events: none;
 }
 
 .current-card__art > .weather-icon {
@@ -2383,6 +2384,7 @@ a {
   color: rgba(246, 248, 255, 0.88);
   background: rgba(255, 255, 255, 0.08);
   cursor: pointer;
+  touch-action: manipulation;
   font-size: 9px;
   font-weight: 700;
   transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
@@ -2436,6 +2438,7 @@ a {
   color: var(--muted);
   background: color-mix(in srgb, var(--surface) 88%, transparent);
   cursor: pointer;
+  touch-action: manipulation;
   transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
@@ -2665,6 +2668,10 @@ a {
   .favourite-card__remove {
     width: 44px;
     height: 44px;
+  }
+
+  .favourite-action {
+    min-width: 44px;
   }
 
   .search-results__status {
