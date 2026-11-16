@@ -134,7 +134,7 @@ Weatherboard/
 ├── package.json
 ├── package-lock.json
 └── vite.config.js
-
+```
 *Note: The structure above represents the main project organization. Folder and file names may vary slightly.*
 
 ## 📱 Responsive Design
