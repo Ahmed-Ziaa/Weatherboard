@@ -1,25 +1,26 @@
 # 🌤️ WeatherBoard
 
-A responsive and installable weather dashboard built with React and Vite. WeatherBoard allows users to search for cities, view real-time weather conditions, check a 5-day forecast, and save their favorite cities.
+A modern, responsive weather dashboard built with **React and Vite**. WeatherBoard provides real-time weather updates, a 5-day forecast, city search with autocomplete, favorite cities, offline access, and Progressive Web App (PWA) support.
 
 ## 🚀 Live Demo
 
-**[Open WeatherBoard](https://weatherboard-chi.vercel.app/)**
+**[https://weatherboard-chi.vercel.app/](https://weatherboard-chi.vercel.app/)**
 
 ## ✨ Features
 
 - **Current Weather:** View real-time temperature, humidity, wind speed, and weather conditions.
 - **5-Day Forecast:** Check upcoming weather conditions.
-- **City Search:** Search for cities worldwide.
-- **City Autocomplete:** Get city suggestions with country information while typing.
-- **Favorite Cities:** Save up to 5 favorite cities for quick access.
-- **Local Storage:** Favorite cities and preferences persist after refreshing the page.
-- **PWA Support:** Install WeatherBoard as an application on supported devices.
-- **Offline Support:** Access previously viewed weather information when offline.
+- **City Search:** Search for cities around the world.
+- **City Autocomplete:** Get city suggestions with country information.
+- **Favorite Cities:** Save and manage up to 5 favorite cities.
+- **Local Storage:** Persist favorite cities and weather preferences.
+- **Offline Support:** Access previously viewed weather information without an internet connection.
+- **PWA Support:** Install WeatherBoard on supported devices.
+- **Weather Reminders:** Configure daily weather reminder preferences.
 - **Dark & Light Mode:** Switch between themes.
-- **Responsive Design:** Optimized for desktop, tablet, and mobile devices.
+- **Responsive UI:** Optimized for mobile, tablet, and desktop screens.
 
-## 🛠️ Technologies Used
+## 🛠️ Tech Stack
 
 - React
 - JavaScript
@@ -28,69 +29,14 @@ A responsive and installable weather dashboard built with React and Vite. Weathe
 - OpenWeatherMap API
 - GeoDB Cities API
 - Open-Meteo API
-- Browser Local Storage
-- Progressive Web App (PWA)
+- Local Storage
 - Service Workers
+- Progressive Web App (PWA)
 - Vercel
 
-## ⚙️ Getting Started
-
-Follow these steps to run the project locally.
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/Ahmed-Ziaa/Weatherboard.git
-```
-
-### 2. Navigate to the Project
-
-```bash
-cd Weatherboard
-```
-
-### 3. Install Dependencies
-
-```bash
-npm install
-```
-
-### 4. Configure Environment Variables
-
-Create a `.env` file in the project root and add your API keys:
-
-```env
-VITE_OPENWEATHER_API_KEY=your_openweather_api_key
-VITE_GEODB_API_KEY=your_geodb_api_key
-```
-
-Get your API keys from:
-
-- [OpenWeatherMap](https://openweathermap.org/api)
-- [GeoDB Cities](https://rapidapi.com/wirefreethought/api/geodb-cities)
-
-Open-Meteo can be used without an API key.
-
-### 5. Start the Development Server
-
-```bash
-npm run dev
-```
-
-Open the local URL shown in your terminal, usually:
+## 📁 Project Structure
 
 ```text
-http://localhost:5173
-```
-
-### 6. Build for Production
-
-```bash
-npm run build
-```
-
-📁 Project Structure
-
 Weatherboard/
 │
 ├── public/
@@ -135,22 +81,71 @@ Weatherboard/
 ├── package-lock.json
 └── vite.config.js
 ```
-*Note: The structure above represents the main project organization. Folder and file names may vary slightly.*
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Ahmed-Ziaa/Weatherboard.git
+```
+
+### 2. Open Project Directory
+
+```bash
+cd Weatherboard
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_OPENWEATHER_API_KEY=your_openweathermap_api_key
+VITE_GEODB_API_KEY=your_geodb_api_key
+```
+
+API providers:
+
+- [OpenWeatherMap](https://openweathermap.org/api)
+- [GeoDB Cities – RapidAPI](https://rapidapi.com/wirefreethought/api/geodb-cities)
+
+Open-Meteo does not require an API key.
+
+### 5. Run Development Server
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed in your terminal.
+
+### 6. Production Build
+
+```bash
+npm run build
+```
+
+## 🌐 Deployment
+
+WeatherBoard is deployed using **Vercel**.
+
+**Live Website:** https://weatherboard-chi.vercel.app/
 
 ## 📱 Responsive Design
 
-WeatherBoard is designed to work across different screen sizes, including:
+WeatherBoard supports different screen sizes:
 
 - Mobile devices
 - Tablets
 - Desktop screens
 
-## 🌐 Deployment
-
-The project is deployed on **Vercel**.
-
-Live URL: https://weatherboard-chi.vercel.app/
-
 ---
 
-Built with React and Vite.
+**WeatherBoard** — Your weather, at a glance. 🌤️
