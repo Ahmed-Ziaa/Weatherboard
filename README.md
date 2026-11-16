@@ -89,26 +89,51 @@ http://localhost:5173
 npm run build
 ```
 
-## 📁 Project Structure
+📁 Project Structure
 
-```text
 Weatherboard/
+│
 ├── public/
 │   ├── icons/
-│   ├── manifest.json
-│   └── service-worker.js
+│   │   ├── weatherboard-192.png
+│   │   └── weatherboard-512.png
+│   ├── manifest.webmanifest
+│   └── sw.js
+│
 ├── src/
+│   ├── app/
+│   │   └── App.jsx
+│   │
 │   ├── components/
+│   │   ├── FavouriteCities.jsx
+│   │   ├── Forecast.jsx
+│   │   ├── Header.jsx
+│   │   ├── Icon.jsx
+│   │   ├── WeatherIcon.jsx
+│   │   └── WeatherReminder.jsx
+│   │
+│   ├── data/
+│   │   └── locations.js
+│   │
 │   ├── services/
+│   │   ├── favourites.js
+│   │   ├── geoDb.js
+│   │   ├── offlineWeather.js
+│   │   ├── openWeather.js
+│   │   └── weatherReminders.js
+│   │
 │   ├── styles/
-│   ├── App.jsx
+│   │   └── index.css
+│   │
 │   └── main.jsx
-├── .env.example
+│
 ├── .gitignore
+├── PROMPTS.md
+├── README.md
 ├── index.html
 ├── package.json
-└── README.md
-```
+├── package-lock.json
+└── vite.config.js
 
 *Note: The structure above represents the main project organization. Folder and file names may vary slightly.*
 
